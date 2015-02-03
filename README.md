@@ -19,11 +19,8 @@ myCjs.closed = function(){
   window.console.log("room closed!");
 };
 
-// join the party
+// join/leave the party
 myCjs.join('roomName');
-
-// go home
-myCjs.join('');
 ```
 
 ### 3. Connect events
