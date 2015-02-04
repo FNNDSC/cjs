@@ -61,5 +61,32 @@ define(['togetherjs'], function () {
     TogetherJS();
   }
 
+  cjs.prototype.send = function(event){
+    // connect method to send when target emits event!
+    var myJsonString = JSON.stringify(event.detail);
+    TogetherJS.send({'type': event.type, 'data': myJsonString});
+  }
+
+  // add event handler
+  cjs.prototype.add = function(eventHandler) {
+    // connect method to handle received messages
+    TogetherJS.hub.on(eventHandler.name, function (msg) {
+      if (! msg.sameUrl) {
+        return;
+      }
+      eventHandler.callback(msg);
+    });
+
+    var el = document.getElementById(eventHandler.target);
+    el.addEventListener(eventHandler.name, this.send, false);
+  }
+
+  // remove event handler
+  cjs.prototype.remove = function(eventHandler) {
+    // remove event listener
+    var el = document.getElementById(eventHandler.target);
+    el.removeEventListener(eventHandler.name, this.send, false);
+  }
+
     return cjs;
 });

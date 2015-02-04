@@ -39,12 +39,10 @@ With the following approach, we we add/remove viewer from the **scene**, we also
 Maybe id can just be the target's ID.
 
 ```javascript
-var handlers = [];
-
 myHandler = {
   id: 'myHandlerID',
   name: 'messageName',
-  target: 'viewer1'
+  target: 'viewer1Id'
   callback: function(message){
     window.console.log('messageName received! ' + message);
   }
@@ -52,11 +50,9 @@ myHandler = {
 
 // add a handler
 myCjs.add(myHandler);
-handlers.push(id);
 
 // remove it
-handlerIndex = handlers.indexOf("myHandlerID");
-myCjs.remove('messageName', handlerIndex);
+myCjs.remove(myHandler);
 ```
 ### 4. Data synchronization
 
