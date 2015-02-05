@@ -1,6 +1,8 @@
 # cjs
 the FNNDSC collaboration tool (based on TogetherJS)!
 
+WebRTC support: http://caniuse.com/#feat=webrtc
+
 ## Usage
 
 ### 1. Create
